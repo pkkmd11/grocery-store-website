@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="my">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#176b50">
+  <meta name="description" content="U San Ko + Daw Khin Tar Grocery Store product menu">
+  <title>U San Ko + Daw Khin Tar Grocery Store</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Noto+Sans+Myanmar:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="./" aria-label="Home">
+        <span class="brand-mark">US</span>
+        <span class="brand-copy">
+          <strong data-i18n="storeName">ဦးစန်းကို + ဒေါ်ခင်တာ ကုန်စုံဆိုင်</strong>
+          <small data-i18n="storeTagline">နေ့စဉ်သုံး ကုန်ပစ္စည်းများ</small>
+        </span>
+      </a>
+      <button id="languageToggle" class="language-button" type="button" aria-label="Change language">EN</button>
+         
+    </div>
+  
+      <!-- Store Contact Bar -->
+  <div class="contact-bar">
+      <div class="container contact-content">
+          <a class="contact-item"
+            href="https://maps.app.goo.gl/d7V8iThm9qnyCpiR7"
+            target="_blank"
+            rel="noopener noreferrer">
+              <span>📍</span>
+              <span>စျေးလမ်း၊ အမှတ် ၄၊ မင်းတုန်း၊ မကွေးတိုင်း၊ မြန်မာ</span>
+          </a>
+
+          <a class="contact-item phone-link" href="tel:+959451513339">
+              <span>☎</span>
+              <span>09451513339</span>
+          </a>
+      </div>
+  </div>
+    
+  </header>
+  
+
+  <main class="page">
+    <section class="welcome">
+      <div>
+        <p class="eyebrow" data-i18n="eyebrow">OUR STORE MENU</p>
+        <h1 data-i18n="headline">ဆိုင်ရှိ ကုန်ပစ္စည်းများ</h1>
+        <p class="welcome-copy" data-i18n="welcomeCopy">ပစ္စည်းအမည်၊ အမှတ်တံဆိပ်တို့ဖြင့် ရှာဖွေနိုင်ပါတယ်။</p>
+      </div>
+      <div class="store-status"><span class="status-dot"></span><span data-i18n="liveMenu">Product menu</span></div>
+    </section>
+
+    <section class="toolbar" aria-label="Product search and filters">
+      <label class="search-box">
+        <span class="search-icon" aria-hidden="true">⌕</span>
+        <input id="searchInput" type="search" autocomplete="off" data-i18n-placeholder="searchPlaceholder" placeholder="ပစ္စည်း / Brand ရှာရန်">
+        <button id="clearSearch" class="clear-search" type="button" aria-label="Clear search" hidden>×</button>
+      </label>
+      <div class="filter-row">
+        <select id="categoryFilter" aria-label="Category">
+          <option value="all">အမျိုးအစားအားလုံး</option>
+        </select>
+        <select id="subcategoryFilter" aria-label="Subcategory">
+          <option value="all">အမျိုးအစားခွဲအားလုံး</option>
+        </select>
+        <select id="brandFilter" aria-label="Brand">
+          <option value="all">Brand အားလုံး</option>
+        </select>
+      </div>
+    </section>
+
+    <section class="result-line">
+      <p id="resultCount" aria-live="polite">Loading products…</p>
+      <button id="refreshButton" class="refresh-button" type="button"><span aria-hidden="true">↻</span> <span data-i18n="refresh">ပြန်လည်ရယူရန်</span></button>
+    </section>
+
+    <div id="categoryChips" class="category-chips" aria-label="Quick category filters"></div>
+    <section id="productGrid" class="product-grid" aria-live="polite">
+      <div class="loading-card"><span class="loader"></span><p data-i18n="loading">ပစ္စည်းများ ရယူနေပါတယ်…</p></div>
+    </section>
+
+    <section id="emptyState" class="empty-state" hidden>
+      <div class="empty-icon">⌕</div>
+      <h2 data-i18n="emptyTitle">ပစ္စည်းမတွေ့ပါ</h2>
+      <p data-i18n="emptyCopy">အခြားအမည်ဖြင့် ပြန်လည်ရှာဖွေကြည့်ပါ။</p>
+      <button id="resetFilters" class="reset-button" type="button" data-i18n="reset">Filter များဖယ်ရှားရန်</button>
+    </section>
+
+    <p id="lastUpdated" class="last-updated"></p>
+  </main>
+
+  <footer class="site-footer">
+    <strong data-i18n="footerName">ဦးစန်းကို + ဒေါ်ခင်တာ ကုန်စုံဆိုင်</strong>
+    <span data-i18n="footerNote">ဈေးနှုန်းနှင့် ပစ္စည်းရရှိမှုကို ဆိုင်တွင် ထပ်မံအတည်ပြုနိုင်ပါတယ်။</span>
+  </footer>
+
+  <script src="./app.js" defer></script>
+</body>
+</html>
