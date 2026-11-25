@@ -178,3 +178,20 @@ h1 { margin: 0; font-size: clamp(26px, 4vw, 36px); letter-spacing: -.8px; line-h
         flex-shrink: 0;
     }
 }
+.price-notice {
+  color: #dc2626;
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 8px;
+  animation: priceBlink 1.5s ease-in-out infinite;
+}
+
+@keyframes priceBlink {
+  0%, 100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.3;
+  }
+}
