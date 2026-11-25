@@ -1,7 +1,7 @@
 (() => {
   "use strict";
 
-  const API_URL = "/api/products";
+  const API_URL = "https://script.google.com/macros/s/AKfycbwHwnZYv1YJEZNzi5KBnsXCDidq2aU7G30g4BGQaZeC_pFkqFMHpEY-oripZqLU5L1x/exec";
   const $ = (selector) => document.querySelector(selector);
 
   const state = {
@@ -98,6 +98,52 @@
   function getEnglishName(product) {
     return clean(product.Item_Name_EN) || clean(product.Name_EN);
   }
+
+
+function requestJSONP(apiUrl, params = {}) {
+  return new Promise((resolve, reject) => {
+    const callbackName =
+      "groceryCallback_" + Date.now() + "_" + Math.floor(Math.random() * 100000);
+
+    const script = document.createElement("script");
+    const url = new URL(apiUrl);
+
+    Object.entries(params).forEach(([key, value]) => {
+      url.searchParams.set(key, value);
+    });
+
+    url.searchParams.set("callback", callbackName);
+
+    let timeout;
+
+    function cleanup() {
+      delete window[callbackName];
+      script.remove();
+      clearTimeout(timeout);
+    }
+
+    window[callbackName] = (result) => {
+      cleanup();
+      resolve(result);
+    };
+
+    script.onerror = () => {
+      cleanup();
+      reject(new Error("Unable to connect to Google Apps Script API"));
+    };
+
+    timeout = setTimeout(() => {
+      cleanup();
+      reject(new Error("API request timed out"));
+    }, 20000);
+
+    script.async = true;
+    script.src = url.toString();
+
+    document.head.appendChild(script);
+  });
+}
+
 
   function getCategoryRecord(id, type = "category") {
     const key = type === "subcategory"
@@ -293,9 +339,12 @@
     $("#productGrid").innerHTML = `<div class="loading-card"><span class="loader"></span><p>${escapeHTML(translations[state.language].loading)}</p></div>`;
 
     try {
-      const response = await fetch(API_URL, { headers: { Accept: "application/json" }, cache: "no-store" });
-      if (!response.ok) throw new Error(`HTTP ${response.status}`);
-      const result = await response.json();
+      // const response = await fetch(API_URL, { headers: { Accept: "application/json" }, cache: "no-store" });
+      // if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      // const result = await response.json();
+      const result = await requestJSONP(API_URL, {
+        action: "products"
+      });
       if (!result.success || !Array.isArray(result.data)) throw new Error(result.message || "Invalid API response");
       state.products = result.data;
       state.categories = Array.isArray(result.categories) ? result.categories : [];
