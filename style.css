@@ -145,6 +145,12 @@ h1 { margin: 0; font-size: clamp(26px, 4vw, 36px); letter-spacing: -.8px; line-h
 .phone-link {
     flex-shrink: 0;
 }
+.brand-logo {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
 
 /* Mobile Responsive - Always One Line */
 @media (max-width: 600px) {
