@@ -1,4 +1,4 @@
-# Grocery Store Website v2
+# Grocery Store Website
 
 Mobile-first bilingual (Myanmar / English) grocery menu using Google Sheets, Google Apps Script and Cloudflare Pages.
 
